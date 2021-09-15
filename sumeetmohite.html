@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Animation</title>
+
+  <style>
+    .main-container {
+      border: 2px solid black;
+      margin: 4rem;
+      padding: 1.5rem;
+    }
+
+    .row {
+      /* border: 1px solid black; */
+      display: flex;
+      height: 6rem;
+    }
+
+    #row-0,
+    #row-1,
+    #row-2 {
+      margin-bottom: 6rem;
+    }
+
+    .buttons-container {
+      width: 100vw;
+      text-align: center;
+    }
+
+    .btn {
+      background: green;
+      color: white;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      width: 5rem;
+      margin: 0 1.25rem;
+    }
+
+    .box {
+      height: 6rem;
+      width: 100%;
+      border: 2px solid black;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="layout">
+    <div class="main-container">
+      <div class="row" id="row-0">
+        <div class="box" id="s0-r0-c0"></div>
+        <div class="box" id="s0-r0-c1"></div>
+        <div class="box" id="s1-r0-c0"></div>
+        <div class="box" id="s1-r0-c1"></div>
+        <div class="box" id="s2-r0-c0"></div>
+        <div class="box" id="s2-r0-c1"></div>
+        <div class="box" id="s3-r0-c0"></div>
+        <div class="box" id="s3-r0-c1"></div>
+      </div>
+      <div class="row" id="row-1">
+        <div class="box" id="s0-r1-c0"></div>
+        <div class="box" id="s0-r1-c1"></div>
+        <div class="box" id="s1-r1-c0"></div>
+        <div class="box" id="s1-r1-c1"></div>
+        <div class="box" id="s2-r1-c0"></div>
+        <div class="box" id="s2-r1-c1"></div>
+        <div class="box" id="s3-r1-c0"></div>
+        <div class="box" id="s3-r1-c1"></div>
+      </div>
+      <div class="row" id="row-2">
+        <div class="box" id="s0-r2-c0"></div>
+        <div class="box" id="s0-r2-c1"></div>
+        <div class="box" id="s1-r2-c0"></div>
+        <div class="box" id="s1-r2-c1"></div>
+        <div class="box" id="s2-r2-c0"></div>
+        <div class="box" id="s2-r2-c1"></div>
+        <div class="box" id="s3-r2-c0"></div>
+        <div class="box" id="s3-r2-c1"></div>
+      </div>
+      <div class="row" id="row-3">
+        <div class="box" id="s0-r3-c0"></div>
+        <div class="box" id="s0-r3-c1"></div>
+        <div class="box" id="s1-r3-c0"></div>
+        <div class="box" id="s1-r3-c1"></div>
+        <div class="box" id="s2-r3-c0"></div>
+        <div class="box" id="s2-r3-c1"></div>
+        <div class="box" id="s3-r3-c0"></div>
+        <div class="box" id="s3-r3-c1"></div>
+      </div>
+
+    </div>
+    <div class="buttons-container">
+      <button type="button" class="btn" onclick="startAnimation()">Start</button>
+      <button class="btn" onclick="resetAnimation()">Reset</button>
+    </div>
+  </div>
+
+
+  <script>
+    function startAnimation() {
+      const colors = ["blue","green","red","yellow"]
+      for(let s=0; s<4; s++){
+        for (let r = 0; r < 4; r++) {
+          if (r % 2 == 0) {
+            let c = 0;
+            let box = document.getElementById(`s${s}-r${r}-c${c}`);
+            box.setAttribute("style", `transition: all ${(4-r)*0.5}s ease ${((4 * s) + r) / 1.5}s  ; background:${colors[r]}`)
+          } else {
+            let c = 1;
+            let box = document.getElementById(`s${s}-r${r}-c${c}`);
+            box.setAttribute("style", `transition: all ${(4-r)*0.5}s ease ${((4 * s) + r) / 1.5}s ; background:${colors[r]}`)
+          }
+        }
+      }
+      }
+
+    function resetAnimation() {
+      for (let s = 0; s < 4; s++) {
+        for (let r = 0; r < 4; r++) {
+          if (r % 2 == 0) {
+            let c = 0;
+            let box = document.getElementById(`s${s}-r${r}-c${c}`);
+            box.setAttribute("style", `transition: all 1s ease-out 0.25s  ; background: white`)
+          } else {
+            let c = 1;
+            let box = document.getElementById(`s${s}-r${r}-c${c}`);
+            box.setAttribute("style", `transition: all 1s ease-out 0.25s ; background: white`)
+          }
+        }
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
