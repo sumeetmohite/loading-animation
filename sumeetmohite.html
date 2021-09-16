@@ -15,7 +15,6 @@
     }
 
     .row {
-      /* border: 1px solid black; */
       display: flex;
       height: 6rem;
     }
@@ -111,6 +110,7 @@
 
 
   <script>
+//function to start filling colors
     function startAnimation() {
       const colors = ["blue","green","red","yellow"]
       for(let s=0; s<4; s++){
@@ -127,7 +127,7 @@
         }
       }
       }
-
+// function to remove the colors 
     function resetAnimation() {
       for (let s = 0; s < 4; s++) {
         for (let r = 0; r < 4; r++) {
